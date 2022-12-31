@@ -19,11 +19,12 @@ class Mydb:
         self.__db = dict(zip(names, births))
     def __get_attr(self, json_object:list, target:str) -> list:
         return [item[target] for item in json_object]
-    def find_one_select(self, name:str) -> datetime:
+    def find_one_select(self, name:str) -> datetime | None:
         try:
             return self.__db[name]
         except KeyError as e:
             print(e, 'is not in db')
+            return None
 
 if __name__ == "__main__":
     db = Mydb('disk.json')
