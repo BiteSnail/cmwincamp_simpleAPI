@@ -9,7 +9,7 @@ class myconfigs:
             print(e, default_path + " file is not exist")
             self.data = ConfigParser()
             self.data['DEFAULT'] = {'port':8000,
-                                    'appname':"app:app",
+                                    'appname':"main:app",
                                     'hostname':"127.0.0.1"}
             with open('config.ini', 'w') as configfile:
                 self.data.write(configfile)
