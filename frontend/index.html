@@ -6,7 +6,7 @@
         <script defer src="./src/servercomm.js"></script>
         <link rel="stylesheet" href="css/style.css" type="text/css">
     </head>
-    <body>
+    <body onload="getData()">
         <div class="nav">
             <div class="logo">
                 <img src="resources/birthday.webp" alt="">
@@ -23,8 +23,9 @@
         <div id="namelist" class="container">
         </div>
         <div>
-            <input id="name" class="input1">
-            <button onclick="onButtonClick()" class="inputButton">생일</button>
+            <input type="text" id="name" class="input1">
+            <input type="date" id="birth" class="input2">
+            <button onclick="onButtonClick2()" class="inputButton">추가</button>
             <div id="datelist">
             </div>
         </div>
