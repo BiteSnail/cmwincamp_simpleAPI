@@ -27,3 +27,8 @@ async def get_birth(user:User = Body()):
 @app.get("/names")
 async def get_names():
     return {"names":db.get_items()}
+
+@app.post("/create")
+async def create_user(user:dict = Body()):
+    db.insert_item(user['username'], user['birthday'])
+    return None
