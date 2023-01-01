@@ -5,7 +5,12 @@
 `Python` >= 3.10
 
 1. setup venv configurations
+    1. `cd backend`
+    2. `python -m venv [name]`
+    3. `pip install -r requirements.txt`
+    4. `[name]\Scripts\activate`
 2. start server with `main.py` in backend directory
+    
 3. `index.html` for frontend
 
 ## Requirements
