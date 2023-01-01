@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>생일 찾기</title>
+        <meta charset="utf-8">
+        <script defer src="./src/servercomm.js"></script>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+    </head>
+    <body>
+        <div class="nav">
+            <div class="logo">
+                <img src="resources/birthday.webp" alt="">
+            </div>
+            <div class="nav_but">
+                <a href="">github</a>
+            </div>
+        </div>
+        <section class="header">
+            <div class="title">
+                <h1>찾고 싶은 생일을 입력하세요</h1>
+            </div>
+        </section>
+        <div id="namelist" class="container">
+        </div>
+        <div>
+            <input id="name" class="input1">
+            <button onclick="onButtonClick()" class="inputButton">생일</button>
+            <div id="datelist">
+            </div>
+        </div>
+    </body>
+</html>
