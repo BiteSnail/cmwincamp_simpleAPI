@@ -11,14 +11,20 @@ class Mydb:
         except FileNotFoundError as e:
             print(e)
             return
+
     def __set_db(self, json_object:list):
         names=self.__get_attr(json_object, 'username')
         births=list(map(datetime.strptime, 
                     self.__get_attr(json_object, 'birthday'), 
                     [Mydb.__DATEFORMAT]*len(json_object)))
         self.__db = dict(zip(names, births))
+
     def __get_attr(self, json_object:list, target:str) -> list:
         return [item[target] for item in json_object]
+
+    def get_items(self, iskey:bool = True) -> list:
+        return list(self.__db.keys()) if iskey else list(self.__db.values())
+
     def find_one_select(self, name:str) -> datetime | None:
         try:
             return self.__db[name]
@@ -29,3 +35,4 @@ class Mydb:
 if __name__ == "__main__":
     db = Mydb('disk.json')
     print(db.find_one_select('박정현'))
+    print(db.get_items())
