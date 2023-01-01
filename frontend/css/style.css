@@ -1,0 +1,61 @@
+.nav{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.nav .logo img{
+    width: 50px;
+}
+
+.nav .nav_but a{
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+}
+
+.container {
+    display: flex;
+    height: 150px;
+    background: #a2d5f2
+}
+  
+.item {
+    width: 70px;
+    height: 25px;
+    margin: 2px;
+    border-radius: 17%;
+    text-align: center;
+    background: #54b2e8;
+    color: white;
+} 
+
+.input1 {
+    width: 300px;
+    height: 50px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid black;
+    font-size: 30px;
+}
+
+.inputButton{
+    width: 100px;
+    height: 60px;
+    margin-top: 10px;
+    border-top : none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid black;
+    font-size: 30px;
+}
+
+.inputButton:hover{
+    cursor: pointer;
+    background-color: #727678;
+}
