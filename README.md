@@ -1,6 +1,13 @@
 # Describe
 간단한 생일 출력 프로그램 제작
 
+## HowTo
+`Python` >= 3.10
+
+1. setup venv configurations
+2. start server with `main.py` in backend directory
+3. `index.html` for frontend
+
 ## Requirements
 ### Features
 * 사용자로부터 이름을 입력받는다.
