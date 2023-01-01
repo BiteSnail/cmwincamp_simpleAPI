@@ -1,17 +1,18 @@
 from configparser import ConfigParser
+import os.path
 
 class myconfigs:
     def __init__(self, default_path: str = ".\src\config\config.ini") -> None:
-        try:
+        if os.path.exists(default_path):
             self.data = ConfigParser()
             self.data.read(default_path)
-        except AttributeError as e:
-            print(e, default_path + " file is not exist")
+        else:
+            print(default_path + " file is not exist")
             self.data = ConfigParser()
             self.data['DEFAULT'] = {'port':8000,
                                     'appname':"main:app",
                                     'hostname':"127.0.0.1"}
-            with open('config.ini', 'w') as configfile:
+            with open(default_path, 'w') as configfile:
                 self.data.write(configfile)
             
     def get_config(self, option: str) -> dict | None:
