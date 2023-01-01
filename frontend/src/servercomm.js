@@ -3,9 +3,6 @@ const getData = () => {
     .then((response)=> {
         return response.json()
     })
-    .catch((error)=>{
-        console.log(error)
-    })
     .then((data)=>{
         const namelist = document.getElementById("namelist")
         list = data.names
@@ -18,6 +15,9 @@ const getData = () => {
             obj.innerHTML = list[idx];
             namelist.appendChild(obj);
         }
+    })
+    .catch((error)=>{
+        console.log(error)
     })
 }
 
@@ -35,9 +35,6 @@ async function onButtonClick(id){
     .then((response)=>{
         return response.json()
     })
-    .catch((error)=> {
-        console.log(error)
-    })
     .then((data)=>{
         if(data.birthday === null){
 
@@ -51,6 +48,9 @@ async function onButtonClick(id){
                         birth.getDate() + "일 입니다."
         const birthStr = document.getElementById("datelist");
         birthStr.innerHTML = innerStr;
+    })
+    .catch((error)=> {
+        console.log(error)
     })
 }
 
