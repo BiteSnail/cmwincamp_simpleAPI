@@ -1,30 +1,35 @@
-fetch("http://127.0.0.1:8000/names")
-.then((response)=> {
-    return response.json()
-})
-.catch((error)=>{
-    console.log(error)
-})
-.then((data)=>{
-    list = data.names
-    for (idx in list){
-        const obj = document.createElement("div")
-        obj.className = "item"
-        obj.innerHTML = list[idx]
-        document.getElementById("namelist").appendChild(obj)
-    }
-})
+const getData = () => {
+    fetch("http://127.0.0.1:8000/names")
+    .then((response)=> {
+        return response.json()
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+    .then((data)=>{
+        const namelist = document.getElementById("namelist")
+        list = data.names
+        namelist.innerHTML = ""
+        for (idx in list){
+            const obj = document.createElement("div");
+            obj.id = "name"+ idx;
+            obj.className = "item";
+            obj.onclick = function() {onButtonClick(obj.id); };
+            obj.innerHTML = list[idx];
+            namelist.appendChild(obj);
+        }
+    })
+}
 
-async function onButtonClick(){
-    const nameInput = document.getElementById('name');
-    
+async function onButtonClick(id){
+    const nameInput = document.getElementById(id);
     await fetch("http://127.0.0.1:8000/birth", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            username: nameInput.value
+            username: nameInput.innerHTML
         })
     })
     .then((response)=>{
@@ -46,5 +51,27 @@ async function onButtonClick(){
                         birth.getDate() + "일 입니다."
         const birthStr = document.getElementById("datelist");
         birthStr.innerHTML = innerStr;
+    })
+}
+
+async function onButtonClick2(){
+    const nameInput = document.getElementById('name');
+    const birthInput = document.getElementById('birth');
+
+    await fetch("http://127.0.0.1:8000/create", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            username: nameInput.value,
+            birthday: birthInput.value
+        })
+    })
+    .then((response)=>{
+        getData()
+    })
+    .catch((error)=>{
+        console.log(error);
     })
 }
