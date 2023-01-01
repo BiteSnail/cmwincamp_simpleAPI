@@ -6,13 +6,13 @@ class Mydb:
     __DATEFORMAT = "%Y-%m-%d"
     __DEAFULTPATH = ".\src\data\disk.json"
     def __init__(self, path: str = __DEAFULTPATH):
-        try:
-            with open(path) as jsonfile:
+        if os.path.exists(path):
+            with open(path, mode='r') as jsonfile:
                 json_object = json.load(jsonfile)
                 self.__set_db(json_object)
-        except FileNotFoundError as e:
-            print(e)
-            return
+        else:
+            self.__db = {}
+            self.__disk_update()
 
     def __set_db(self, json_object:list):
         names=self.__get_attr(json_object, 'username')
