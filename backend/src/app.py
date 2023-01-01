@@ -32,3 +32,8 @@ async def get_names():
 async def create_user(user:dict = Body()):
     db.insert_item(user['username'], user['birthday'])
     return None
+
+@app.post("/delete")
+async def delete_user(user:dict = Body()):
+    db.delete_item(user['username'])
+    return None

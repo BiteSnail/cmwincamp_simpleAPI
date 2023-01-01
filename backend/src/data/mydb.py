@@ -50,6 +50,10 @@ class Mydb:
     def insert_item(self, name:str, birth:str) -> None:
         self.__db[name] = datetime.strptime(birth, self.__DATEFORMAT)
         self.__disk_update()
+    
+    def delete_item(self, name:str) -> None:
+        self.__db.pop(name)
+        self.__disk_update()
 
 if __name__ == "__main__":
     db = Mydb('disk.json')
