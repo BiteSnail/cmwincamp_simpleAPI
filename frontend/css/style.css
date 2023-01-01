@@ -27,9 +27,10 @@
 .item {
     width: 70px;
     height: 25px;
-    margin: 2px;
+    margin: 5px;
     border-radius: 17%;
     text-align: center;
+    align-items: center;
     background: #54b2e8;
     color: white;
 } 
@@ -37,7 +38,22 @@
 .item:hover, :focus {
     cursor:pointer;
     background: #1799e4;
-    outline: 2px solid #007cad;
+}
+
+.dropbut {
+    text-align: center;
+    align-items: center;
+    font-size: 10px;
+    background-color: rgb(17, 16, 16);
+}
+
+.dropbut:hover, :focus{
+    cursor:pointer;
+    transition-property: background-color, color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    background-color: white;
+    color:black;
 }
 
 .input1 {

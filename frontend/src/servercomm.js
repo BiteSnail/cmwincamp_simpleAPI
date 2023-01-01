@@ -13,6 +13,13 @@ const getData = () => {
             obj.className = "item";
             obj.onclick = function() {onButtonClick(obj.id); };
             obj.innerHTML = list[idx];
+            obj.value = list[idx];
+            const but = document.createElement("div");
+            but.id = "drop"+idx;
+            but.className = "dropbut"
+            but.onclick = function() {onButtonClick3(obj.id);};
+            but.innerHTML = "delete";
+            obj.appendChild(but);
             namelist.appendChild(obj);
         }
     })
@@ -29,7 +36,7 @@ async function onButtonClick(id){
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            username: nameInput.innerHTML
+            username: nameInput.value
         })
     })
     .then((response)=>{
@@ -66,6 +73,25 @@ async function onButtonClick2(){
         body: JSON.stringify({
             username: nameInput.value,
             birthday: birthInput.value
+        })
+    })
+    .then((response)=>{
+        getData()
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+}
+
+async function onButtonClick3(id){
+    const nameInput = document.getElementById(id);
+    await fetch("http://127.0.0.1:8000/delete", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            username: nameInput.value
         })
     })
     .then((response)=>{
